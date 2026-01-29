@@ -2,29 +2,46 @@
 @import "tailwindcss";
 
 :root {
-    --prime-1-bg-color: #dbf4ff;
-    --prime-1-30-bg-color: #061e2955;
-    --prime-2-bg-color: #1D546D;
-    
-    --second-bg-color: #5F9598;
-    
-    --accent-color: #F3F4F4;
-    --accent-2-color: #6d6d6d;
-    --accent-3-color: #013246;
+    /* === Primary Blues === */
+    --sky-blue: #E6F7FF;          /* light sky background */
+    --sky-blue-soft: #CDEEFF;    /* subtle panels / cards */
 
-    --prime-btn-color: #f4f4f4;
-    --prime-btn-color-hover: #d3d3d3;
+    --ocean-blue: #1E6F9F;       /* main primary blue */
+    --ocean-blue-dark: #0B3C5D;  /* headers / navbar / depth */
+    --ocean-blue-dark-soft: #5cc0fa;  /* headers / navbar / depth */
+
+    /* === Secondary Accent === */
+    --teal-blue: #4FA3A5;        /* highlights, switches */
+
+    /* === Neutral Accents === */
+    --white-soft: #F5F7F8;
+    --gray-muted: #6B7280;
+    --ink-blue: #0A2A3A;
+
+    /* === Buttons === */
+    --btn-primary: #d3efff;
+    --btn-primary-hover: #afe2ff;
 }
 
 @theme {
-    --color-bg-prime-1: #dbf4ff;
-    --color-bg-prime-1-30: #061e2955;
-    --color-bg-prime-2: #1D546D;
-    --color-bg-second: #5F9598;
-    --color-accent: #F3F4F4;
-    
-    --color-btn-prime: #F3F4F4;
-    --color-btn-second: #d3d3d3;
+    /* === Backgrounds === */
+    --color-bg-primary: #E6F7FF;              /* main app background */
+    --color-bg-primary-soft: #CDEEFF55;       /* translucent panels */
+    --color-bg-primary-2: #1E6F9F;            /* primary sections */
+    --color-bg-primary-2-dark: #0B3C5D;       /* navbar / footer */
+    --color-bg-primary-2-dark-soft: #5cc0fa;       /* navbar / footer */
+
+    /* === Secondary / Highlights === */
+    --color-bg-secondary: #4FA3A5;             /* switches, tags */
+
+    /* === Accents === */
+    --color-accent-light: #F5F7F8;        /* cards, inputs */
+    --color-accent-muted: #6B7280;        /* secondary text */
+    --color-accent-ink: #0A2A3A;          /* icons, strong text */
+
+    /* === Buttons === */
+    --color-btn-primary: #d3efff;
+    --color-btn-primary-hover: #afe2ff;
 
     --font-arimo: Arimo;
 
@@ -44,6 +61,16 @@
         }
     }
 
+    --animate-sclaeUP: scaleHov .2s ease-in-out forwards;
+
+    @keyframes scaleHov {
+        from { 
+            transform: perspective(1) scale(1);
+        }
+        to {
+            transform: perspective(100px) scale(1.1);
+        }
+    }
     
 }
 
@@ -54,26 +81,44 @@
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #1b1b1c;
+    background-color: #1c1c1d;
     border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #3e4042;
+    background: #666767;
     border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--accent-2-color);
+    background-color: var(--gray-muted);
 }
 
 @layer components {
     .prime-btn {
-        @apply px-3 py-1 text-black font-bold bg-btn-prime hover:bg-btn-second;
+        @apply font-bold
+          text-white
+          cursor-pointer
+          outline-btn-primary
+          outline-2
+          hover:bg-btn-primary-hover
+          hover:text-black
+          hover:outline-0
+          transition-all
+          hover:animate-sclaeUP;
+    }
+
+    .prime-btn-og {
+        @apply text-xl font-bold text-black
+          cursor-pointer
+          bg-accent-light
+          hover:bg-btn-primary-hover
+          hover:text-[22px]
+          transition-all
     }
 
     .task-lis {
-        @apply w-[99.5%] h-11 flex justify-between items-center gap-1 text-[19px] rounded-lg ;
+        @apply w-[99.5%] h-[58px] py-2 flex justify-between items-center gap-1 text-[17px] bg-bg-primary-2-dark-soft rounded-lg ;
     }
     
     .flex-text-center {
@@ -88,9 +133,9 @@
         @apply bg-[url("./assets/trash-fill.svg")]
     }
 
-    .hover-bg {
-        @apply bg-bg-prime-1-30
-    }
+    /* .hover-bg {
+        @apply 
+    } */
 }
 
 * {
