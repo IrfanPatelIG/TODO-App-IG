@@ -7,9 +7,15 @@
     --sky-blue-soft: #CDEEFF;    /* subtle panels / cards */
 
     --ocean-blue: #1E6F9F;       /* main primary blue */
-    --ocean-blue-dark: #0B3C5D;  /* headers / navbar / depth */
-    --ocean-blue-dark-soft: #5cc0fa;  /* headers / navbar / depth */
-
+    --ocean-blue-dark: #0b125d;  /* headers / navbar / depth */
+    --ocean-blue-dark-30: #063350c3;  /* headers / navbar / depth */
+    --ocean-blue-dark-soft: #292d308f;  /* headers / navbar / depth */
+    --ocean-blue-dark-2-soft: #0b3c5db2;  /* headers / navbar / depth */
+    
+    --carbon-dark: #0d0e10a3;  /* headers / navbar / depth */
+    --carbon-hover-dark: #020203a3;  /* headers / navbar / depth */
+    --carbon-dark-soft: #000000a9;  /* headers / navbar / depth */
+    
     /* === Secondary Accent === */
     --teal-blue: #4FA3A5;        /* highlights, switches */
 
@@ -28,22 +34,29 @@
     --color-bg-primary: #E6F7FF;              /* main app background */
     --color-bg-primary-soft: #CDEEFF55;       /* translucent panels */
     --color-bg-primary-2: #1E6F9F;            /* primary sections */
-    --color-bg-primary-2-dark: #0B3C5D;       /* navbar / footer */
-    --color-bg-primary-2-dark-soft: #5cc0fa;       /* navbar / footer */
-
+    --color-bg-primary-2-dark: #0b125d;       /* navbar / footer */
+    --color-bg-primary-2-dark-30: #063350c3;
+    --color-bg-primary-2-dark-soft: #292d308f;       /* navbar / footer */
+    --color-bg-carbon-dark: #090909a3;
+    --color-bg-carbon-dark-soft: #000000a9;
+    
     /* === Secondary / Highlights === */
     --color-bg-secondary: #4FA3A5;             /* switches, tags */
-
+    
     /* === Accents === */
     --color-accent-light: #F5F7F8;        /* cards, inputs */
     --color-accent-muted: #6B7280;        /* secondary text */
     --color-accent-ink: #0A2A3A;          /* icons, strong text */
+    --color-bg-dark: #0d0e10a3;
+    --color-bg-hover-dark: #020203a3;
 
     /* === Buttons === */
     --color-btn-primary: #d3efff;
     --color-btn-primary-hover: #afe2ff;
 
     --font-arimo: Arimo;
+
+    --radius-my: 8px;
 
     --animate-rotate360: rotate360 .5s cubic-bezier(0.4, 0, 0.2, 1) forwards ;
 
@@ -101,7 +114,7 @@
           cursor-pointer
           outline-btn-primary
           outline-2
-          hover:bg-btn-primary-hover
+          hover:bg-white
           hover:text-black
           hover:outline-0
           transition-all
@@ -112,30 +125,55 @@
         @apply text-xl font-bold text-black
           cursor-pointer
           bg-accent-light
-          hover:bg-btn-primary-hover
+          hover:bg-bg-primary
           hover:text-[22px]
           transition-all
     }
 
+    .hover-btn:hover {
+        @apply transition-all bg-bg-primary text-black cursor-pointer 
+    }
+
     .task-lis {
-        @apply w-[99.5%] h-[58px] py-2 flex justify-between items-center gap-1 text-[17px] bg-bg-primary-2-dark-soft rounded-lg ;
+        @apply 
+        flex justify-between items-center gap-1
+        text-white
+        bg-bg-dark
+        rounded-my
+        cursor-default
+        shadow-sm
+        hover:border border-white/20
+        hover:shadow-md
+        hover:scale-[1.01]
+        transition-all duration-300
+    }
+
+    .action-btn-all {
+        @apply
+        absolute -bottom-5 left-1/2 -translate-x-1/2
+        text-[10px]
+        px-1.5 py-[1px]
+        rounded
+        bg-black text-white
+        opacity-0 
+        group-hover:opacity-100
+        group-hover:translate-y-[1px]
+        transition-all duration-400
+        pointer-events-none
     }
     
     .flex-text-center {
-        @apply flex items-center
+        @apply flex items-center justify-center
     }
 
-    .flex-center {
-        @apply flex items-center justify-center
+    .flex-text-start {
+        @apply flex items-start justify-start
     }
 
     .delete-task {
         @apply bg-[url("./assets/trash-fill.svg")]
     }
 
-    /* .hover-bg {
-        @apply 
-    } */
 }
 
 * {
